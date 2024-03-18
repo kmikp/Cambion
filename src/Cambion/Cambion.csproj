@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Whitestone.Cambion</AssemblyName>
     <RootNamespace>Whitestone.Cambion</RootNamespace>
-    <Version>1.1.0-preview</Version>
+    <Version>4.1.0</Version>
     <Authors>Whitestone</Authors>
     <Product>Whitestone Cambion</Product>
     <Description>Cambion is a light-weight open-source service bus for .NET with a set of convenience functions for synchronous and asynchronous event handling.</Description>
@@ -15,7 +15,7 @@
     <PackageIconUrl>https://cambion.whitestone.no/images/Cambion_Logo_128.png</PackageIconUrl>
     <PackageIcon>Cambion_Logo_128.png</PackageIcon>
     <PackageTags>messaging servicebus esb enterprice-service-bus cambion event-aggregator</PackageTags>
-    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <PropertyGroup>

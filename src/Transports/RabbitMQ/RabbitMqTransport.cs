@@ -29,24 +29,27 @@ namespace Whitestone.Cambion.Transport.RabbitMQ
             if (_config.Connection.ConnectionString != null)
             {
                 factory.Uri = _config.Connection.ConnectionString;
+                _conn = factory.CreateConnection();
             }
             else
             {
-                factory.HostName = _config.Connection.Hostname;
                 factory.Port = _config.Connection.Port;
                 factory.VirtualHost = _config.Connection.VirtualHost;
                 factory.UserName = _config.Connection.Username;
                 factory.Password = _config.Connection.Password;
+                if (!string.IsNullOrWhiteSpace(_config.Connection.Hostname))
+                    _config.Connection.Hosts.Insert(0, _config.Connection.Hostname);
+                
+                _conn = factory.CreateConnection(_config.Connection.Hosts);
             }
-
-            _conn = factory.CreateConnection();
+            
             _channel = _conn.CreateModel();
-
+            
             // Declare exchange and queue and bind them together
             _channel.ExchangeDeclare(_config.Exchange.Name, _config.Exchange.Type, _config.Exchange.Durable, _config.Exchange.AutoDelete);
-            _channel.QueueDeclare(_config.Queue.Name, _config.Queue.Durable, _config.Queue.Exclusive, _config.Queue.AutoDelete);
+            _channel.QueueDeclare(_config.Queue.Name, _config.Queue.Durable, _config.Queue.Exclusive, _config.Queue.AutoDelete, _config.Queue.Arguments);
             _channel.QueueBind(_config.Queue.Name, _config.Exchange.Name, string.Empty);
-
+            
             // Set up listening for queue messages
             EventingBasicConsumer consumer = new EventingBasicConsumer(_channel);
             consumer.Received += QueueDataReceived;
