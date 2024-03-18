@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using RabbitMQ.Client;
 
 namespace Whitestone.Cambion.Transport.RabbitMQ
@@ -37,6 +38,7 @@ namespace Whitestone.Cambion.Transport.RabbitMQ
             public string Password { get; set; }
             public string VirtualHost { get; set; } = "/";
             public int Port { get; set; } = 5672;
+            public IList<string> Hosts { get; set; } = new List<string>();
             internal Uri ConnectionString { get; set; }
         }
 
@@ -54,6 +56,7 @@ namespace Whitestone.Cambion.Transport.RabbitMQ
             public bool Durable { get; set; } = true;
             public bool Exclusive { get; set; } = true;
             public bool AutoDelete { get; set; } = true;
+            public Dictionary<string, object> Arguments { get; set; } = new Dictionary<string, object>(); 
         }
     }
 }

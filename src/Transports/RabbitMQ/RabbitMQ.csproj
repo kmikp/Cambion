@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <AssemblyName>Whitestone.Cambion.Transport.RabbitMQ</AssemblyName>
     <RootNamespace>Whitestone.Cambion.Transport.RabbitMQ</RootNamespace>
-    <Version>1.1.0-preview</Version>
+    <Version>4.1.0</Version>
     <Authors>Whitestone</Authors>
     <Product>Whitestone Cambion</Product>
     <Description>RabbitMQ transport for Whitestone Cambion</Description>
@@ -28,7 +28,7 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Options" Version="6.0.0" />
-    <PackageReference Include="RabbitMQ.Client" Version="5.1.2" />
+    <PackageReference Include="RabbitMQ.Client" Version="6.8.1" />
   </ItemGroup>
 
   <ItemGroup>
